@@ -1,6 +1,6 @@
 let allIssues = [];
 
-// Initialize data
+
 async function fetchIssues() {
     showLoading(true);
     try {
@@ -38,7 +38,7 @@ function renderCards(issues) {
     `).join('');
 }
 
-// Challenge: Search Implementation
+
 document.getElementById('searchBtn').addEventListener('click', async () => {
     const query = document.getElementById('searchInput').value;
     showLoading(true);
@@ -54,7 +54,7 @@ function updateStats() {
 }
 
 function filterIssues(status) {
-    // Update active tab styles
+
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('tab-active'));
     document.getElementById(`tab-${status}`).classList.add('tab-active');
 
