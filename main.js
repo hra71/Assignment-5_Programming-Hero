@@ -130,33 +130,33 @@ document.querySelectorAll('.tab').forEach(tab => {
 });
 
 window.addEventListener('DOMContentLoaded', loadIssues);
-// Add this logic to your main.js
+
 document.querySelectorAll('.tab').forEach(tab => {
     tab.onclick = () => {
-        // 1. UI: Toggle Active Class
+        
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('tab-active'));
         tab.classList.add('tab-active');
         
         const status = tab.dataset.status;
         
-        // 2. Filter the data
+        
         const filteredIssues = status === 'all' 
             ? allIssues 
             : allIssues.filter(i => i.status === status);
         
-        // 3. Update the Header Text (e.g., "Open Issues")
+        
         const headerTitle = document.querySelector('h2.text-xl');
         if (headerTitle) {
             headerTitle.innerHTML = `${status.charAt(0).toUpperCase() + status.slice(1)} Issues`;
         }
 
-        // 4. Update the Square Header Icon Count
+        
         const headerIconCount = document.getElementById("headerIconCount");
         if (headerIconCount) {
             headerIconCount.innerText = filteredIssues.length;
         }
         
-        // 5. Render the filtered cards
+        
         render(filteredIssues);
     };
 });
