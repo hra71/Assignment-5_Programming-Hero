@@ -26,15 +26,14 @@ function updateTabCounts() {
 function getPriorityStyle(p) {
     const s = { 
         'HIGH': 'bg-red-100 text-red-600', 
-        'MEDIUM': 'bg-yellow-100 text-yellow-700', // Yellow
-        'LOW': 'bg-gray-200 text-gray-600'          // Grey
+        'MEDIUM': 'bg-yellow-100 text-yellow-700',
+        'LOW': 'bg-gray-200 text-gray-600'          
     };
     return s[(p || 'LOW').toUpperCase()] || 'bg-gray-100 text-gray-500';
 }
 
 function getLabelMarkup(labels) {
     if (!labels || labels.length === 0) return "";
-    // Uniform Orange Labels as requested
     const orangeStyle = "bg-orange-50 text-orange-600 border-orange-100";
     return labels.map(l => `<span class="px-2 py-1 text-[9px] font-bold border rounded-full uppercase ${orangeStyle}">${l}</span>`).join('');
 }
@@ -45,7 +44,7 @@ function render(issues) {
     issues.forEach(issue => {
         const card = document.createElement("div");
         
-        // Dynamic border color based on status: Green for Open, Purple for Closed
+       
         const statusBorder = issue.status === 'open' ? 'border-green-400' : 'border-purple-400';
         const statusIconColor = issue.status === 'open' ? 'text-green-500' : 'text-purple-500';
         
@@ -106,17 +105,15 @@ const searchInput = document.getElementById("searchInput");
 searchInput.addEventListener("input", (e) => {
     const term = e.target.value.toLowerCase();
     
-    // Filter the original list of issues
     const filtered = allIssues.filter(issue => 
         issue.title.toLowerCase().includes(term) || 
         issue.description.toLowerCase().includes(term)
     );
     
-    // Render the filtered results
+    
     render(filtered);
 });
 
-// Logic for tabs and close button
 document.getElementById("closeModal").onclick = () => modal.classList.add("hidden");
 
 document.querySelectorAll('.tab').forEach(tab => {
